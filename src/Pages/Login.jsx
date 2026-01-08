@@ -28,6 +28,7 @@ export default function LoginPage() {
 
     async function login(){
 
+
         try {
             const response = await axios.post(import.meta.env.VITE_API_URL+"/users/login",{
                 email:email,
@@ -35,9 +36,12 @@ export default function LoginPage() {
             })
             console.log(response)
             toast.success("Login Sucessfully!")
+
+            localStorage.setItem("token", response.data.token)
+
             if(response.data.role === "admin"){
                 // redirect to admin page "/admin" -> windows.location.href("/admin")
-                navigate("/admin")
+                navigate("/admin/")
             }else{
                 // redirect to home page "/"
             }
