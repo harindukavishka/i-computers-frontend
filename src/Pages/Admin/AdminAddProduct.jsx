@@ -1,4 +1,7 @@
+import axios from "axios"
 import { useState } from "react"
+import toast from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
 
 export default function AdminAddProductPage() {
     const [productId,setProductId] = useState("")
@@ -11,9 +14,49 @@ export default function AdminAddProductPage() {
     const [category,setCategory] = useState("others")
     const [brand,setBrand] = useState("standard")
     const [model,setModel] = useState("")
+    const navigate = useNavigate()
+
+    async function handleAddProduct(){
+        try{
+
+            const token = localStorage.getItem("token")
+            
+            if(token == null){
+                toast.error("You must be loggin to add product")
+                window.location.href = "/login"
+                return;
+            }
+
+            await axios.post(import.meta.env.VITE_API_URL+"/product",{
+                productId:productId,
+                name:productName,
+                description:description,
+                altNames: altNames.split(","),
+                price:price,
+                labledPrice:labledPrice,
+                isVisible:isvisible,
+                category:category,
+                brand:brand,
+                model:model
+                },{
+                headers : {
+                    "Authorization" : `Bearer ${token}`
+                }
+            })
+
+            toast.success("Product Added Successfully")
+            navigate("/admin/products")
+
+        }catch(e){
+            toast.error(e?.response?.data?.message || "Faild to add product")
+            return;
+        }
+        
+    }
 
     return (
-        <div className="w-full max-h-full flex flex-wrap">
+        <div className="w-full max-h-full flex flex-wrap overflow-y-scroll hide-scroll-track">
+            <h1 className="text-2xl font-bold w-full h-[70px] sticky top-0 bg-primary">ADD PRODUCT</h1>
             <div className=" w-[50%] h-[120px] flex flex-col">
                 <label htmlFor="" className="font-bold text-m ml-3">Product ID : </label>
                 <input value={productId} onChange={
@@ -97,6 +140,10 @@ export default function AdminAddProductPage() {
                         setModel(e.target.value)
                     }
                 } type="text" placeholder="ex:-Thing" className="border-accent border-3 h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
+            </div>
+            <div className=" w-full h-[75px] flex items-center justify-end sticky bottom-0 bg-white rounded-b-xl p-3 text-white gap-4">
+                <button onClick={handleAddProduct} className="w-[120px] h-[40px] bg-green-600 hover:bg-green-400 rounded-2xl shadow-2xl">Add Product</button>
+                <button className="w-[120px] h-[40px] bg-gray-600 hover:bg-gray-400 rounded-2xl shadow-2xl">Cancle</button>
             </div>
         </div>
     )
