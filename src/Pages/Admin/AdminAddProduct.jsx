@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
+import uploadFile from "../../Utility/mediaUpload"
 
 export default function AdminAddProductPage() {
     const [productId,setProductId] = useState("")
@@ -14,9 +15,11 @@ export default function AdminAddProductPage() {
     const [category,setCategory] = useState("others")
     const [brand,setBrand] = useState("standard")
     const [model,setModel] = useState("")
+    const [files,setFiles] = useState([])
     const navigate = useNavigate()
 
     async function handleAddProduct(){
+
         try{
 
             const token = localStorage.getItem("token")
@@ -27,6 +30,15 @@ export default function AdminAddProductPage() {
                 return;
             }
 
+            const fileUploadPromises = []
+
+            for(let i=0;i<files.length;i++){
+                fileUploadPromises[i] = uploadFile(files[i])
+            }
+
+            const fileUrls = await Promise.all(fileUploadPromises)
+
+
             await axios.post(import.meta.env.VITE_API_URL+"/product",{
                 productId:productId,
                 name:productName,
@@ -36,6 +48,7 @@ export default function AdminAddProductPage() {
                 labledPrice:labledPrice,
                 isVisible:isvisible,
                 category:category,
+                images:fileUrls,
                 brand:brand,
                 model:model
                 },{
@@ -80,6 +93,10 @@ export default function AdminAddProductPage() {
                         setDescription(e.target.value)
                     }
                 } type="text" placeholder="ex:- Laptop" className="border-accent border-3 h-[95px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
+            </div>
+            <div className=" w-[100%] h-[120px] flex flex-col">
+                <label htmlFor="" className="font-bold text-m ml-3">Images : </label>
+                <input onChange={(e)=>{setFiles(e.target.files)}} multiple type="file" className="border-accent border-3 h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
             </div>
             <div className=" w-[100%] h-[120px] flex flex-col">
                 <label htmlFor="" className="font-bold text-m ml-3">Alternative Names (Comma Separated) : </label>

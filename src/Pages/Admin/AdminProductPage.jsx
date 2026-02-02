@@ -1,139 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import priceFormatted from "../../Utility/priceFormated";
-
-const sampleProducts = [
-  {
-    productId: "PRD001",
-    name: "Wireless Mouse",
-    description: "Ergonomic wireless mouse with adjustable DPI",
-    altNames: ["Mouse Wireless", "Cordless Mouse"],
-    price: 2500,
-    labledPrice: 3000,
-    category: "Electronics",
-    images: [
-      "/images/mouse-1.png",
-      "/images/mouse-2.png"
-    ],
-    isVisible: true,
-    brand: "Logitech",
-    model: "M185"
-  },
-  {
-    productId: "PRD002",
-    name: "Mechanical Keyboard",
-    description: "RGB backlit mechanical keyboard with blue switches",
-    altNames: ["Gaming Keyboard", "RGB Keyboard"],
-    price: 12500,
-    labledPrice: 15000,
-    category: "Electronics",
-    images: [
-      "/images/keyboard-1.png",
-      "/images/keyboard-2.png"
-    ],
-    isVisible: true,
-    brand: "Redragon",
-    model: "K552"
-  },
-  {
-    productId: "PRD003",
-    name: "USB-C Charger",
-    description: "Fast charging USB-C wall charger 25W",
-    altNames: ["Type-C Charger", "Fast Charger"],
-    price: 3500,
-    labledPrice: 4000,
-    category: "Accessories",
-    images: [
-      "/images/charger-1.png"
-    ],
-    isVisible: true,
-    brand: "Samsung",
-    model: "EP-TA800"
-  },
-  {
-    productId: "PRD004",
-    name: "Laptop Backpack",
-    description: "Water-resistant backpack for 15.6 inch laptops",
-    altNames: ["Notebook Bag", "Laptop Bag"],
-    price: 6500,
-    labledPrice: 7500,
-    category: "Bags",
-    images: [
-      "/images/bag-1.png",
-      "/images/bag-2.png"
-    ],
-    isVisible: true,
-    brand: "Targus",
-    model: "CitySmart"
-  },
-  {
-    productId: "PRD005",
-    name: "Bluetooth Headphones",
-    description: "Over-ear wireless headphones with noise isolation",
-    altNames: ["Wireless Headset", "Bluetooth Headset"],
-    price: 18000,
-    labledPrice: 20000,
-    category: "Audio",
-    images: [
-      "/images/headphones-1.png"
-    ],
-    isVisible: false,
-    brand: "Sony",
-    model: "WH-1000XM4"
-  },
-  {
-  productId: "PRD006",
-  name: "Smart LED Bulb",
-  description: "WiFi enabled smart LED bulb with mobile app control",
-  altNames: ["Smart Bulb", "WiFi LED Light"],
-  price: 4200,
-  labledPrice: 5000,
-  category: "Electronics",
-  images: [
-    "/images/bulb-1.png",
-    "/images/bulb-2.png"
-  ],
-  isVisible: true,
-  brand: "Philips",
-  model: "Hue White"
-},
-{
-  productId: "PRD007",
-  name: "External Hard Drive",
-  description: "Portable 1TB USB 3.0 external hard drive",
-  altNames: ["Portable HDD", "External Storage"],
-  price: 18500,
-  labledPrice: 21000,
-  category: "Storage",
-  images: [
-    "/images/hdd-1.png"
-  ],
-  isVisible: true,
-  brand: "Seagate",
-  model: "Expansion 1TB"
-},
-{
-  productId: "PRD008",
-  name: "Webcam HD",
-  description: "Full HD 1080p webcam with built-in microphone",
-  altNames: ["HD Webcam", "USB Camera"],
-  price: 7200,
-  labledPrice: 8500,
-  category: "Accessories",
-  images: [
-    "/images/webcam-1.png"
-  ],
-  isVisible: true,
-  brand: "Logitech",
-  model: "C920"
-}
-
-];
+import axios from "axios";
 
 
 export default function AdminProductPage() {
-  const [products, setProducts] = useState(sampleProducts);
+  const [products, setProducts] = useState([]);
+
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    axios.get(import.meta.env.VITE_API_URL+"/product", {
+      headers : {
+        "Authorization" : "Bearer "+ token
+      },
+    }).then((response)=>{
+      setProducts(response.data)
+    });}
+  ,[])
 
   return (
     <div className="w-full h-full  bg-primary/30 p-1 relative ">
@@ -162,7 +46,7 @@ export default function AdminProductPage() {
       </div>
 
       {/* Table Container */}
-        <div className="max-h-[525px] bg-white rounded-2xl shadow-xl overflow-y-auto">
+        <div className="max-h-[535px] bg-white rounded-2xl shadow-xl overflow-y-auto hide-scroll-track">
             <table className="w-full text-sm">
                 {/* Table Head */}
                 <thead className="uppercase tracking-wide text-left bg-secondary text-primary sticky top-0 z-10">
@@ -237,6 +121,11 @@ export default function AdminProductPage() {
                     </tr>
                 ))}
                 </tbody>
+                <tfoot className="sticky bottom-0 z-10">
+                  <tr className="flex  h-[30px] bg-white   py-2 px-4">
+                    <td className="text-[9px] font-bold text-secondary/70 ">Tip : Scroll please</td>
+                  </tr>
+                </tfoot>
             </table>
         </div>
     </div>
