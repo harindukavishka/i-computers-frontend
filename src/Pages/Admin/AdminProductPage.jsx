@@ -3,12 +3,18 @@ import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import priceFormatted from "../../Utility/priceFormated";
 import axios from "axios";
+import { CiEdit } from "react-icons/ci";
+import { CiTrash } from "react-icons/ci";
+import DeleteModal from "../../components/deleteModal";
+import LoadingAnimation from "../../components/loadingAnimation";
 
 
 export default function AdminProductPage() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(()=>{
+    if(setLoading){
     const token = localStorage.getItem("token");
     axios.get(import.meta.env.VITE_API_URL+"/product", {
       headers : {
@@ -16,8 +22,9 @@ export default function AdminProductPage() {
       },
     }).then((response)=>{
       setProducts(response.data)
-    });}
-  ,[])
+      setLoading(false)
+    });}}
+  ,[loading])
 
   return (
     <div className="w-full h-full  bg-primary/30 p-1 relative ">
@@ -46,7 +53,7 @@ export default function AdminProductPage() {
       </div>
 
       {/* Table Container */}
-        <div className="max-h-[535px] bg-white rounded-2xl shadow-xl overflow-y-auto hide-scroll-track">
+        {loading?<div className="min-w-full min-h-full flex justify-center items-center overflow-hidden bg-transparent"><LoadingAnimation/></div>:<div className="max-h-[535px] bg-white rounded-2xl shadow-xl overflow-y-auto hide-scroll-track">
             <table className="w-full text-sm">
                 {/* Table Head */}
                 <thead className="uppercase tracking-wide text-left bg-secondary text-primary sticky top-0 z-10">
@@ -60,6 +67,7 @@ export default function AdminProductPage() {
                     <th className="px-5 py-4 font-semibold">Price</th>
                     <th className="px-5 py-4 font-semibold">Label Price</th>
                     <th className="px-5 py-4 font-semibold">Status</th>
+                    <th className="px-5 py-4 font-semibold">Actions</th>
                 </tr>
                 </thead>
 
@@ -118,16 +126,25 @@ export default function AdminProductPage() {
                             <span className="flex items-center justify-center text-sm px-2 py-1 gap-2 font-semibold leading-tight text-green-700 bg-green-100 rounded-full"><span className="w-2 h-2 rounded-full bg-green-600"/> Visible</span>
                         ) : ( <span className="flex items-center justify-center text-sm px-2 py-1 gap-2 font-semibold leading-tight text-red-700 bg-red-100 rounded-full"><span className="w-2 h-2 rounded-full bg-red-600"/>Hidden</span>)}
                     </td>
+                    <td className="px-5 py-4  line-through">
+                      <div className="flex items-center justify-center gap-3">
+                        <Link to="/admin/updateProduct" state={product} >
+                          <CiEdit className="text-amber-600 text-xl"/>
+                        </Link>
+                          <DeleteModal product={product} setLoading={setLoading}/>
+                      </div>
+                    </td>
                     </tr>
                 ))}
                 </tbody>
                 <tfoot className="sticky bottom-0 z-10">
                   <tr className="flex  h-[30px] bg-white   py-2 px-4">
-                    <td className="text-[9px] font-bold text-secondary/70 ">Tip : Scroll please</td>
+                    <td className="text-[9px] font-bold text-secondary/70 ">Tip : Scroll</td>
                   </tr>
                 </tfoot>
             </table>
-        </div>
+            
+        </div>}
     </div>
   );
 }

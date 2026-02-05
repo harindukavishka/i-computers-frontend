@@ -5,6 +5,7 @@ import { HiOutlineUsers } from "react-icons/hi2";
 import { MdOutlineReviews } from "react-icons/md";
 import AdminProductPage from "./Admin/AdminProductPage";
 import AdminAddProductPage from "./Admin/AdminAddProduct";
+import AdminUpdateProductPage from "./Admin/AdminUpdateProducts";
 
 export default function AdminPage() {
     return (
@@ -24,6 +25,7 @@ export default function AdminPage() {
                     <Route path="/users" element={<h1>users</h1>} />
                     <Route path="/reviews" element={<h1>Reviews</h1>} />
                     <Route path="/addProduct" element={<AdminAddProductPage />} />
+                    <Route path="/updateProduct" element={<AdminUpdateProductPage />} />
                 </Routes> 
             </div>
         </div>
