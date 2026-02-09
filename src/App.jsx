@@ -11,10 +11,10 @@ function App() {
   
 
   return (
-    <div className="w-full h-screen bg-primary text-secondary">
+    <div className="w-full h-screen bg-secondary text-secondary">
       <Toaster position="top-right"/>
       <Routes>
-       <Route path="/" element={<HomePage />} />
+       <Route path="/*" element={<HomePage />} />
        <Route path="/login" element={<LoginPage />} />
        <Route path="/admin/*" element={<AdminPage />} />
        <Route path="/test" element={<Test />} />
