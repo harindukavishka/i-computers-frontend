@@ -11,7 +11,7 @@ function App() {
   
 
   return (
-    <div className="w-full h-screen bg-secondary text-secondary">
+    <div className="w-full h-screen bg-linear-to-b from-bgLight to-bgDark text-text">
       <Toaster position="top-right"/>
       <Routes>
        <Route path="/*" element={<HomePage />} />

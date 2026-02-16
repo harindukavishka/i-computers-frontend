@@ -9,16 +9,19 @@ import AdminUpdateProductPage from "./Admin/AdminUpdateProducts";
 
 export default function AdminPage() {
     return (
-        <div className="w-full h-full flex bg-accent">
-            <div className="w-[200px] h-full bg-accent flex flex-col text-xl">
-                <h1 className="text-2xl border-b-4 m-3 p-3 font-bold">Admin Panel</h1>
-                <Link className="flex flex-row items-center w-full p-[10px] gap-3 hover:bg-secondary hover:text-accent transition-colors duration-300" to="/admin/"><FaRegListAlt />Orders</Link>
-                <Link className="flex flex-row items-center w-full p-[10px] gap-3 hover:bg-secondary hover:text-accent transition-colors duration-300" to="/admin/products"><BiBox />Products</Link>
-                <Link className="flex flex-row items-center w-full p-[10px] gap-3 hover:bg-secondary hover:text-accent transition-colors duration-300" to="/admin/users"><HiOutlineUsers />Users</Link>
-                <Link className="flex flex-row items-center w-full p-[10px] gap-3 hover:bg-secondary hover:text-accent transition-colors duration-300" to="/admin/reviews"><MdOutlineReviews />Reviews</Link>
+        <div className="w-full h-full flex text-text bg-bgDark">
+            <div className="w-[230px] h-full bg-bgDark flex flex-col text-xl">
+                <div className="flex flex-col items-center justify-center mb-5">
+                    <img src="writeLogoRed.png" alt="Logo" className=" w-[150px] h-[120px] object-fill" />
+                    <p className="mb-5 uppercase tracking-[5px] text-textMuted text-[10px]">-Admin Dashboad-</p>
+                </div>
+                <Link className="text-[16px] flex flex-row items-center w-[200px] p-[10px] m-2  gap-3 rounded-full hover:bg-accent/40 hover:border-2 hover:border-accent transition-all duration-200" to="/admin/"><FaRegListAlt />Orders</Link>
+                <Link className="text-[16px] flex flex-row items-center w-[200px] p-[10px] m-2  gap-3 rounded-full hover:bg-accent/40 hover:border-2 hover:border-accent transition-all duration-200" to="/admin/products"><BiBox />Products</Link>
+                <Link className="text-[16px] flex flex-row items-center w-[200px] p-[10px] m-2  gap-3 rounded-full hover:bg-accent/40 hover:border-2 hover:border-accent transition-all duration-200" to="/admin/users"><HiOutlineUsers />Users</Link>
+                <Link className="text-[16px] flex flex-row items-center w-[200px] p-[10px] m-2  gap-3 rounded-full hover:bg-accent/40 hover:border-2 hover:border-accent transition-all duration-200" to="/admin/reviews"><MdOutlineReviews />Reviews</Link>
                 
             </div>
-            <div className="w-[calc(100%-200px)] h-full bg-primary border-accent border-8 rounded-2xl text-400 p-5">
+            <div className="w-[calc(100%-200px)] h-full bg-linear-to-b from-bg to-bgDark border-bgDark border-8 rounded-2xl text-400 p-5">
                 <Routes>
                     <Route path="/" element={<h1>hi Admin</h1>} />
                     <Route path="/products" element={<AdminProductPage />} />

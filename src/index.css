@@ -4,6 +4,11 @@
     --color-primary: #B4BCBF;
     --color-secondary: #1C2426;
     --color-accent: #D92929;
+    --color-bgDark: hsl(0, 0%, 5%);
+    --color-bg: hsl(0, 0%, 10%);
+    --color-bgLight: hsl(0, 0%, 15%);
+    --color-text: hsl(0, 0%, 95%);
+    --color-textMuted: hsl(0, 0%, 70%);
 }
 
 .hide-scroll-track::-webkit-scrollbar{

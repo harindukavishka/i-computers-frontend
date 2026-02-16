@@ -69,69 +69,72 @@ export default function AdminAddProductPage() {
 
     return (
         <div className="w-full max-h-full flex flex-wrap overflow-y-scroll hide-scroll-track">
-            <h1 className="text-2xl font-bold w-full h-[70px] sticky top-0 bg-primary">ADD PRODUCT</h1>
+            <div className="flex-row w-full h-[70px] rounded-lg mb-3 pl-3 sticky top-0 bg-bgLight">
+                <h1 className="text-2xl font-bold ">ADD PRODUCT</h1>
+                <p className="text-sm text-textMuted">Use this Form to add your new product...</p>
+            </div>
             <div className=" w-[50%] h-[120px] flex flex-col">
-                <label htmlFor="" className="font-bold text-m ml-3">Product ID : </label>
+                <label htmlFor="" className="text-text font-bold text-m ml-3">Product ID </label>
                 <input value={productId} onChange={
                     (e)=>{
                         setProductId(e.target.value)
                     }
-                } type="text" placeholder="ex:- ID001" className="border-accent border-3 h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
+                } type="text" placeholder="ex:- ID001" className="bg-accent/25 border-accent border h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
             </div>
             <div className=" w-[50%] h-[120px] flex flex-col">
-                <label htmlFor="" className="font-bold text-m ml-3">Product Name : </label>
+                <label htmlFor="" className="text-text font-bold text-m ml-3">Product Name </label>
                 <input value={productName} onChange={
                     (e)=>{
                         setProductName(e.target.value)
                     }
-                } type="text" placeholder="ex:- Laptop" className="border-accent border-3 h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
+                } type="text" placeholder="ex:- Laptop" className="bg-accent/25 border-accent border h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
             </div>
             <div className=" w-[100%] h-[170px] flex flex-col">
-                <label htmlFor="" className="font-bold text-m ml-3">Description : </label>
+                <label htmlFor="" className="text-text font-bold text-m ml-3">Description </label>
                 <textarea value={description} onChange={
                     (e)=>{
                         setDescription(e.target.value)
                     }
-                } type="text" placeholder="ex:- Laptop" className="border-accent border-3 h-[95px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
+                } type="text" placeholder="ex:- Laptop" className="bg-accent/25 border-accent border h-[120px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
             </div>
             <div className=" w-[100%] h-[120px] flex flex-col">
-                <label htmlFor="" className="font-bold text-m ml-3">Images : </label>
-                <input onChange={(e)=>{setFiles(e.target.files)}} multiple type="file" className="border-accent border-3 h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
+                <label htmlFor="" className="text-text font-bold text-m ml-3">Images </label>
+                <input onChange={(e)=>{setFiles(e.target.files)}} multiple type="file" className="bg-accent/25 border-accent border h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
             </div>
             <div className=" w-[100%] h-[120px] flex flex-col">
-                <label htmlFor="" className="font-bold text-m ml-3">Alternative Names (Comma Separated) : </label>
+                <label htmlFor="" className=" text-text font-bold text-m ml-3">Alternative Names (Comma Separated) </label>
                 <input value={altNames} onChange={
                     (e)=>{
                         setAltNames(e.target.value)
                     }
-                } type="text" placeholder="ex:- Laptop,Portable devices..." className="border-accent border-3 h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
+                } type="text" placeholder="ex:- Laptop,Portable devices..." className="bg-accent/25 border-accent border h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
             </div>
             <div className=" w-[50%] h-[120px] flex flex-col">
-                <label htmlFor="" className="font-bold text-m ml-3">Price : </label>
+                <label htmlFor="" className="text-text font-bold text-m ml-3">Price </label>
                 <input value={price} onChange={
                     (e)=>{
                         setPrice(e.target.value)
                     }
-                } type="text" placeholder="ex:-LKR 205000" className="border-accent border-3 h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
+                } type="text" placeholder="ex:-LKR 205000" className="bg-accent/25 border-accent border h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
             </div>
             <div className=" w-[50%] h-[120px] flex flex-col">
-                <label htmlFor="" className="font-bold text-m ml-3">Labled Price : </label>
+                <label htmlFor="" className="text-text font-bold text-m ml-3">Labled Price </label>
                 <input value={labledPrice} onChange={
                     (e)=>{
                         setLabledPrice(e.target.value)
                     }
-                } type="text" placeholder="ex:-LKR 195000" className="border-accent border-3 h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
+                } type="text" placeholder="ex:-LKR 195000" className="bg-accent/25 border-accent border h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
             </div>
             <div className=" w-[25%] h-[120px] flex flex-col">
-                <label htmlFor="" className="font-bold text-m ml-3">Visibility : </label>
-                <select value={isvisible} className="border-accent border-3 h-[45px] p-2 m-2 rounded-xl outline-none focus:shadow-2xl" onChange={(e)=>{setIsVisible(e.target.value)}}>
+                <label htmlFor="" className="text-text font-bold text-m ml-3">Visibility </label>
+                <select value={isvisible} className="bg-accent/25 border-accent border h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" onChange={(e)=>{setIsVisible(e.target.value)}}>
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                 </select>
             </div>
             <div className=" w-[25%] h-[120px] flex flex-col">
-                <label htmlFor="" className="font-bold text-m ml-3">Category : </label>
-                <select value={category} className="border-accent border-3 h-[45px] p-2 m-2 rounded-xl outline-none focus:shadow-2xl" onChange={(e)=>{setCategory(e.target.value)}}>
+                <label htmlFor="" className="text-text font-bold text-m ml-3">Category</label>
+                <select value={category} className="bg-accent/25 border-accent border h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" onChange={(e)=>{setCategory(e.target.value)}}>
                     <option value="Others">Others</option>
                     <option value="Laptop">Laptop</option>
                     <option value="Desktop">Desktop</option>
@@ -140,8 +143,8 @@ export default function AdminAddProductPage() {
                 </select>
             </div>
             <div className=" w-[25%] h-[120px] flex flex-col">
-                <label htmlFor="" className="font-bold text-m ml-3">Barnd : </label>
-                 <select value={brand} className="border-accent border-3 h-[45px] p-2 m-2 rounded-xl outline-none focus:shadow-2xl" onChange={(e)=>{setBrand(e.target.value)}}>
+                <label htmlFor="" className="text-text font-bold text-m ml-3">Barnd </label>
+                 <select value={brand} className="bg-accent/25 border-accent border h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" onChange={(e)=>{setBrand(e.target.value)}}>
                     <option value="Standard">Standard</option>
                     <option value="Dell">Dell</option>
                     <option value="MSI">MSI</option>
@@ -151,16 +154,16 @@ export default function AdminAddProductPage() {
                 </select>
             </div>
             <div className=" w-[25%] h-[120px] flex flex-col">
-                <label htmlFor="" className="font-bold text-m ml-3">Model : </label>
+                <label htmlFor="" className="text-text font-bold text-m ml-3">Model </label>
                 <input value={model} onChange={
                     (e)=>{
                         setModel(e.target.value)
                     }
-                } type="text" placeholder="ex:-Thing" className="border-accent border-3 h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
+                } type="text" placeholder="ex:-Thing" className="bg-accent/25 border-accent border h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
             </div>
-            <div className=" w-full h-[75px] flex items-center justify-end sticky bottom-0 bg-white rounded-b-xl p-3 text-white gap-4">
-                <button onClick={handleAddProduct} className="w-[120px] h-[40px] bg-green-600 hover:bg-green-400 rounded-2xl shadow-2xl">Add Product</button>
-                <button className="w-[120px] h-[40px] bg-gray-600 hover:bg-gray-400 rounded-2xl shadow-2xl">Cancle</button>
+            <div className=" w-full h-[75px] flex items-center justify-end sticky bottom-0 bg-bg rounded-b-xl p-3 gap-4">
+                <button onClick={handleAddProduct} className="w-[120px] h-[40px] text-green-500 border-2 border-green-500 hover:bg-green-100 hover:border-none rounded-2xl shadow-2xl transition-all duration-300">Add Product</button>
+                <button className="w-[120px] h-[40px] text-gray-500 border-2 border-grayn-500 hover:bg-gray-100 hover:border-none rounded-2xl shadow-2xl transition-all duration-300">Cancle</button>
             </div>
         </div>
     )
