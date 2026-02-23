@@ -4,6 +4,10 @@
     --color-primary: #B4BCBF;
     --color-secondary: #1C2426;
     --color-accent: #D92929;
+    --color-green: #39ff14;
+    --color-yellow: #ffff00;
+    --color-gray: #E4E4E4;
+    --color-red: #ff073a;
     --color-bgDark: hsl(0, 0%, 5%);
     --color-bg: hsl(0, 0%, 10%);
     --color-bgLight: hsl(0, 0%, 15%);

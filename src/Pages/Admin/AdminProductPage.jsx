@@ -123,13 +123,13 @@ export default function AdminProductPage() {
 
                     <td className="px-5 py-4 text-center">
                         {product.isVisible ? (
-                            <span className="flex items-center justify-center text-sm px-2 py-1 gap-2 font-semibold leading-tight text-green-700 border border-green-700 rounded-full"><span className="w-2 h-2 rounded-full bg-green-700"/> Visible</span>
+                            <span className="flex items-center justify-center text-sm px-2 py-1 gap-2 font-semibold leading-tight text-green border border-green rounded-full"><span className="w-2 h-2 rounded-full bg-green"/> Visible</span>
                         ) : ( <span className="flex items-center justify-center text-sm px-2 py-1 gap-2 font-semibold leading-tight text-red-700 border border-red-700 rounded-full"><span className="w-2 h-2 rounded-full bg-red-700"/>Hidden</span>)}
                     </td>
                     <td className="px-5 py-4  line-through">
                       <div className="flex items-center justify-center gap-3">
                         <Link to="/admin/updateProduct" state={product} >
-                          <CiEdit className="text-amber-600 text-xl"/>
+                          <CiEdit className="text-yellow text-xl"/>
                         </Link>
                           <DeleteModal product={product} setLoading={setLoading}/>
                       </div>

@@ -162,8 +162,8 @@ export default function AdminAddProductPage() {
                 } type="text" placeholder="ex:-Thing" className="bg-accent/25 border-accent border h-[45px] p-3 m-2 rounded-xl outline-none focus:shadow-2xl" />
             </div>
             <div className=" w-full h-[75px] flex items-center justify-end sticky bottom-0 bg-bg rounded-b-xl p-3 gap-4">
-                <button onClick={handleAddProduct} className="w-[120px] h-[40px] text-green-500 border-2 border-green-500 hover:bg-green-100 hover:border-none rounded-2xl shadow-2xl transition-all duration-300">Add Product</button>
-                <button className="w-[120px] h-[40px] text-gray-500 border-2 border-grayn-500 hover:bg-gray-100 hover:border-none rounded-2xl shadow-2xl transition-all duration-300">Cancle</button>
+                <button onClick={handleAddProduct} className="w-[120px] h-[40px] text-green border-2 border-green hover:bg-green/40 hover:border-none rounded-2xl shadow-2xl transition-all duration-300">Add Product</button>
+                <button className="w-[120px] h-[40px] text-gray border-2 border-gray hover:bg-gray/40 hover:border-none rounded-2xl shadow-2xl transition-all duration-300">Cancle</button>
             </div>
         </div>
     )

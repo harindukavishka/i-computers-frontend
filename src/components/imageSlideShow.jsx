@@ -1,4 +1,5 @@
 import { useState } from "react"
+import discountPrice from "../Utility/discountPrice"
 
 export default function SlideShow(props){
 
@@ -15,9 +16,14 @@ export default function SlideShow(props){
     }
 
     return(
-    <div className="w-[500px] h-[570px] flex flex-col">
-        <img src={images[activeImage]} alt="" className="h-[490] w-full object-cover" />
-        <div className="w-full h-[80px] flex flex-row justify-center px-4 gap-4">
+    <div className="w-[770px] h-[550px] flex flex-row justify-center items-cente  relative">
+
+        <div className="w-[70px] h-[70px] flex flex-col justify-center items-center rounded-full bg-accent absolute top-10 right-15">
+            <p className="text-[25px] font-bold">{discountPrice(props.price,props.labledPrice)}%</p>
+            <p className="text-[18px] font-semibold">OFF</p>
+        </div>
+        
+        <div className="w-[100px] h-full flex flex-col justify-center items-center absolute left-1 gap-4">
             {
                 images.map((image, index) => (
                     <img onClick={
@@ -26,6 +32,7 @@ export default function SlideShow(props){
                 ))
             }
         </div>
+        <img src={images[activeImage]} alt="" className="h-[500px]  object-cover ml-10" />
     </div>
 )
 }

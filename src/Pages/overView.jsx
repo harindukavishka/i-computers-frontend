@@ -4,6 +4,9 @@ import toast from "react-hot-toast"
 import { useParams } from "react-router-dom"
 import LoadingAnimation from "../components/loadingAnimation"
 import SlideShow from "../components/imageSlideShow"
+import { MdVerified } from "react-icons/md"
+import priceFormatted from "../Utility/priceFormated"
+import { addToCart, getCart } from "../Utility/cart"
 
 export default function Overview() {
 
@@ -16,7 +19,6 @@ export default function Overview() {
 
         ).then(
             (response)=>{
-                console.log(response.data)
                 setProduct(response.data)
             }
         ).catch(
@@ -34,8 +36,46 @@ export default function Overview() {
             {
                 product==null?<LoadingAnimation/>:
                 <div className="w-full h-full flex justify-center items-center">
-                    <div className="w-[50%] h-full"><SlideShow images={product.images}/></div>
-                    <div className="w-[50%] h-full"></div>
+                    <div className="w-[50%] h-full"><SlideShow price={product.price} labledPrice={product.labledPrice} images={product.images}/></div>
+                    <div className="w-[50%] flex flex-col justify-center h-full p-5">
+                        <div className="flex flex-row gap-2">
+                            <h1 className="text-4xl font-bold">{product.name}</h1>
+                            <MdVerified className="text-accent text-2xl mt-1"/>
+                        
+                        </div>
+                        <div className="flex flex-row w-full">
+                            {
+                                product.altNames.map((altNames,index)=>{
+                                    return(
+                                        <span key={index} className="text-3xl mb-2 text-textMuted font-medium">| {altNames} </span>
+                                    )
+                                })
+                            }
+                        </div>
+                        <p className="text-textMuted text-sm">{product.productId}</p>
+                        
+                        
+                        <p className="text-lg font-medium text-textMuted mt-5 ">
+                            <span>{product.brand || ""}</span>
+                            <span>{product.model || ""}</span>
+                        </p>
+                        <p className="text-[17px] mt-5">{product.description}</p>
+                        <h1 className="text-4xl font-bold mt-5">{priceFormatted(product.price)}</h1>
+                        {   product.labledPrice > product.price &&
+                            <h2 className="text-3xl line-through font-bold text-accent ">{priceFormatted(product.labledPrice)}</h2>
+                        }
+                        <div className="w-full h-[100px] mt-5 flex items-center justify-start gap-4">
+                            <button onClick={
+                                ()=>{
+                                    addToCart(product,1)
+                                    toast.success("Product added to cart")
+                                }
+                            } className="w-[170px] h-[50px] rounded-full text-[15px] font-semibold cursor-pointer text-yellow border border-yellow hover:bg-yellow/50 hover:border-none transition-all duration-200">Add to cart</button>
+                            <button onClick={
+                               ()=>{ console.log(getCart()) }
+                            } className="w-[170px] h-[50px] text-[15px] font-semibold rounded-full cursor-pointer text-green border border-green hover:bg-green/50 hover:border-none transition-all duration-200">Buy now</button>
+                        </div>
+                    </div>
                 </div>
             }
 
