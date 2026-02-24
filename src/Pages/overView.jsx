@@ -1,12 +1,12 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import LoadingAnimation from "../components/loadingAnimation"
 import SlideShow from "../components/imageSlideShow"
 import { MdVerified } from "react-icons/md"
 import priceFormatted from "../Utility/priceFormated"
-import { addToCart, getCart } from "../Utility/cart"
+import { addToCart } from "../Utility/cart"
 
 export default function Overview() {
 
@@ -71,9 +71,16 @@ export default function Overview() {
                                     toast.success("Product added to cart")
                                 }
                             } className="w-[170px] h-[50px] rounded-full text-[15px] font-semibold cursor-pointer text-yellow border border-yellow hover:bg-yellow/50 hover:border-none transition-all duration-200">Add to cart</button>
-                            <button onClick={
-                               ()=>{ console.log(getCart()) }
-                            } className="w-[170px] h-[50px] text-[15px] font-semibold rounded-full cursor-pointer text-green border border-green hover:bg-green/50 hover:border-none transition-all duration-200">Buy now</button>
+                            <Link to="/checkout" state={[{
+                                product:{
+                                        productId:product.productId,
+                                        name:product.name,
+                                        price:product.price,
+                                        labledPrice:product.labledPrice,
+                                        images:product.images[1]
+                                    },
+                                qty:1
+                            }]} className="w-[170px] h-[50px] text-[15px] flex justify-center items-center font-semibold rounded-full cursor-pointer text-green border border-green hover:bg-green/50 hover:border-none transition-all duration-200">Buy now</Link>
                         </div>
                     </div>
                 </div>
