@@ -1,8 +1,10 @@
 import { useState } from "react"
 import priceFormatted from "../Utility/priceFormated"
 import { cartTotalPrice } from "../Utility/cart"
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { FaMinus, FaPlus } from "react-icons/fa"
+// import axios from "axios"
+import CheckOutDetailsModal from "../components/chechoutDetailsModal"
 
 export default function CheckOut() {
 
@@ -10,9 +12,11 @@ export default function CheckOut() {
     const [cart,setCart] = useState(location.state || [])
     const navigate = useNavigate()
 
-    if(location.state.cart==null){
+    if(location.state==null){
         navigate("/products")
     }
+
+   
 
     return (
         <div className="w-screen h-[calc(100vh-100px)] overflow-y-scroll hide-scroll-track ">
@@ -31,18 +35,18 @@ export default function CheckOut() {
                                                 <button onClick={
                                                     ()=>{
                                                         const newCart = [...cart]
-                                                        cartItem.qty=cartItem.qty-1
+                                                        newCart[index].qty=newCart[index].qty-1
                                                         if(newCart[index].qty<=0){
                                                             newCart.splice(index,1)   
                                                         }
-                                                        setCart([...cart])
+                                                        setCart(newCart)
                                                     }
                                                 } className="w-[50px] h-full rounded-l-full flex justify-center items-center text-[15px]  text-red cursor-pointer border border-red hover:bg-red/30 hover:border-none transition-all duration-300"><FaMinus /></button>
                                                 <span className="w-[50px] h-full text-[20px]  flex justify-center items-center">{cartItem.qty}</span>
                                                 <button onClick={
                                                     ()=>{
                                                         const newCart = [...cart]
-                                                        newCart[index]= newCart[index].qty+1
+                                                        newCart[index].qty = newCart[index].qty+1
                                                         setCart(newCart)
                                                     }
                                                 } className="w-[50px] h-full rounded-r-full flex justify-center items-center text-[15px] cursor-pointer text-green border border-green hover:bg-green/30 hover:border-none transition-all duration-300"><FaPlus /></button>
@@ -62,7 +66,7 @@ export default function CheckOut() {
                     )
                 }
                 <div className="w-[600px] h-[100px] sticky bottom-0 flex flex-row items-center gap-4 border-t-2 border-t-accent bg-bg rounded-lg">
-                    <Link state={cart} to="/checkOut" className="w-[200px] h-[50px] flex justify-center items-center absolute left-5 rounded-full text-yellow border border-yellow hover:border-none hover:bg-yellow/30 uppercase tracking-[5px] transition-all duration-300">Buy Now</Link>
+                    <CheckOutDetailsModal cart={cart} />
                     <span className=" text-2xl font-bold absolute right-5 ">{priceFormatted(cartTotalPrice(cart))}</span>
                 </div>
             </div>

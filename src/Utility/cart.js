@@ -59,3 +59,4 @@ export function cartTotalPrice(cart){
     });
     return total
 }
+
