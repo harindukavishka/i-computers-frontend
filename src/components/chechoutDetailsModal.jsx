@@ -57,7 +57,7 @@ export default function CheckOutDetailsModal(props){
                     authorization: `Bearer ${token}`
                 }
             })
-            toast.success("Order Placed Successfully")
+            toast.success("Order Placed Successfully") 
             window.location.href="/"
 
         }catch(err){

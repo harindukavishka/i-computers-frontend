@@ -15,8 +15,8 @@ export default function DeleteModal(props){
         <div>
             <CiTrash onClick={()=>{setIsVissible(true)}} className="text-red-600 text-xl cursor-pointer" />
             {isVissible && (
-                <div className="fixed top-0 left-0 z-100 w-screen h-screen  bg-black/50 flex justify-center items-center">
-                    <div className="bg-white w-[400px] h-[400px] relative">
+                <div className="fixed top-0 left-0 z-100 w-screen h-screen  bg-bgDark/50 flex justify-center items-center">
+                    <div className="bg-bg w-[400px] h-[400px] relative">
                         <button onClick={()=>{setIsVissible(false)}} className="w-[30px] h-[30px] text-red-600 font-bold absolute cursor-pointer right-0 hover:bg-red-600 hover:text-white">X</button>
                         <h1 className="text-lg p-3 text-center mt-30">Are you sure, you want to delete product with id {product.productId} ?</h1>
                         <div className="flex justify-center items-center gap-4">
