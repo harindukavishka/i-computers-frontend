@@ -1,35 +1,12 @@
 import { useState } from "react"
 import { IoClose } from "react-icons/io5"
 import priceFormatted from "../Utility/priceFormated"
-import axios from "axios"
-import toast from "react-hot-toast"
 
-export default function ViewOrderInfoModal(props){
-    const [status,setStatus] = useState(props.order.status)
-    const [notes,setNotes] = useState(props.order.notes)
+export default function CustomerviewOrderInfoModal(props){
     const [isVisible,setIsVisible] = useState(false)
 
     const order = props.order
 
-    async function updateNotesAndStatus() {
-        const token = localStorage.getItem("token")
-
-        try{
-            await axios.put(import.meta.env.VITE_API_URL+"/orders/"+order.orderId,{
-                status:status,
-                notes:notes
-            },{
-                headers:{
-                    authorization: `Bearer ${token}`
-                }
-            })
-            toast.success("Order Updated Successfully")
-            window.location.reload()
-
-        }catch(error){
-            toast.error(error?.response?.data?.message)
-        }
-    }
 
     return(
         <>
@@ -60,20 +37,14 @@ export default function ViewOrderInfoModal(props){
                                         <p className="text-text">{new Date(order.date).toLocaleTimeString()}</p>
                                     </div>
                                     <div className="flex flex-col justify-between">
-                                        <div className="flex flex-row items-center justify-between">
-                                            <p className="font-bold mr-1 text-[20px]">{order.status}</p>
-                                            <select value={status} onChange={(e)=>{setStatus(e.target.value)}} className=" h-[40px] font-bold  px-3 bg-bgDark/30 text-text border border-bgDark rounded-full outline-none">
-                                                <option value="pending">Pending</option>
-                                                <option value="shipping">Shipping</option>
-                                                <option value="delivered">Delivered</option>
-                                                <option value="cancelled">Cancelled</option>
-                                            </select>
-                                        </div>
+                                        
+                                        <p className="font-bold text-[20px]">{order.status}</p>
+ 
                                         <h1 className="font-bold text-[18px]">Total: {priceFormatted(order.total)}</h1>
                                     </div>
                                 </div>
                                 <div className="flex w-full h-[70px]">
-                                    <textarea placeholder="Write the note in here..." value={notes} onChange={(e)=>{setNotes(e.target.value)}} className="border border-text w-full  rounded-full m-2 p-[9px] outline-none text-center"></textarea>
+                                    <p className="border border-text w-full  rounded-full m-2 p-[9px] text-center">{order.notes}</p>
                                 </div>
                             </div>
                             <div className="w-full h-[350px] flex flex-col overflow-y-scroll hide-scroll-track overflow-hidden">
@@ -95,10 +66,6 @@ export default function ViewOrderInfoModal(props){
                                     )
                                 }
                             </div>
-                            {
-                                (order.status != status || order.notes != notes ) &&
-                                <button onClick={updateNotesAndStatus} className="absolute bottom-3 right-5 h-[40px] w-[130px]  text-text border border-accent bg-accent rounded-full cursor-pointer">Save Changes</button>
-                            }
                         </div>  
                     </div>
                 ) 

@@ -1,7 +1,8 @@
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { IoClose } from "react-icons/io5"
+import { useNavigate } from "react-router-dom"
 
 export default function CheckOutDetailsModal(props){
 
@@ -13,10 +14,39 @@ export default function CheckOutDetailsModal(props){
     const[city,setCity] = useState("")
     const[zipCode,setZipCode] = useState("")
     const[phoneNo,setPhoneNo] = useState("")
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+
+        const token = localStorage.getItem("token")
+
+        if(token==null){
+            toast.error("You must be Login first")
+            navigate("/login")
+            return
+        }
+
+       axios.get(import.meta.env.VITE_API_URL+"/users/profile",{
+           headers:{
+               authorization: `Bearer ${token}`
+           }
+       })
+       .then(
+           (res)=>{
+               setFirstName(res.data.firstName)
+               setLastName(res.data.lastName)
+           }
+       )
+       .catch(
+                ()=>{
+                localStorage.removeItem("token")
+                window.location.href = "/login"
+            })
+    },[])
 
     const cart = props.cart
 
-     async function placeOrder(){
+    async function placeOrder(){
 
         const token = localStorage.getItem("token")
 

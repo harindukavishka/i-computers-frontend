@@ -1,6 +1,6 @@
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
-import Cart from "../Pages/cart";
+import UserData from "./userData";
 
 export default function Header(){
     return(
@@ -11,6 +11,9 @@ export default function Header(){
                 <Link to="/products" className="w-[80px] h-[35px] py-1 text-center rounded-full text-text mx-4 hover:text-bgDark hover:border-b-2 transition-all duration-200">Products</Link>
                 <Link to="/about" className="w-[80px] h-[35px] py-1 text-center rounded-full text-text mx-4 hover:text-bgDark hover:border-b-2 transition-all duration-200">About     </Link>
                 <Link to="/contact" className="w-[80px] h-[35px] py-1 text-center rounded-full text-text mx-4 hover:text-bgDark hover:border-b-2  transition-all duration-200">Contact</Link>
+            </div>
+            <div className="w-[300px] h-full absolute right-5 flex justify-center items-center">
+                <UserData/>
             </div>
         </header>
     ) 

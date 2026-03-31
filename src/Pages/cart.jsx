@@ -11,6 +11,7 @@ export default function Cart(){
     const [isVisible,setIsVisible] = useState(false)
 
         useEffect(() => {
+
             if (isVisible) {
                 document.body.style.overflow = "hidden"
             } else {
@@ -24,7 +25,7 @@ export default function Cart(){
 
         return(
             <div>
-                <div onClick={()=>{setIsVisible(true)}} className=" w-[65px] h-[65px] flex justify-center items-center fixed bottom-7 right-7 p-[20px]  rounded-full bg-accent text-[40px] font-bold cursor-pointer" >
+                <div onClick={()=>{setIsVisible(true); setCart(getCart())}} className=" w-[65px] h-[65px] flex justify-center items-center fixed bottom-7 right-7 p-[20px]  rounded-full bg-accent text-[40px] font-bold cursor-pointer" >
                     <MdOutlineShoppingCart />
                 </div>
                 { 

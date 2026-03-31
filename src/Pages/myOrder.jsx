@@ -1,16 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import LoadingAnimation from "../../components/loadingAnimation";
-import priceFormatted from "../../Utility/priceFormated";
 import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import toast from "react-hot-toast";
-import ViewOrderInfoModal from "../../components/viewOrderInfoModal";
+import CustomerviewOrderInfoModal from "../components/customerViewOrderInfoModal";
+import LoadingAnimation from "../components/loadingAnimation";
+import priceFormatted from "../Utility/priceFormated";
 
-export default function AdminOrdersPage() {
+export default function MyOrdersPage() {
 
     const[orders, setOrders] = useState([]);
     const[pageNumber, setPageNumber] = useState(1);
-    const[pageSize, setPageSize] = useState(7);
+    const[pageSize, setPageSize] = useState(10);
     const[totalPages, setTotalPages] = useState(0);
     const[isLoaded, setIsLoaded] = useState(false);
 
@@ -35,11 +35,7 @@ export default function AdminOrdersPage() {
     },[isLoaded])
 
     return (
-        <div className="w-full h-full overflow-hidden relative">
-            <div className="mb-6">
-                <h1 className="text-3xl font-bold text-text">Orders</h1>
-                <p className="text-sm text-textMuted">Manage all orders in catalog</p>
-            </div>
+        <div className="w-full h-[calc(100vh-100px)] overflow-hidden p-5 relative">
             {!isLoaded?<div className="min-w-full min-h-full flex justify-center items-center overflow-hidden bg-transparent"><LoadingAnimation/></div>
             :
             <div className="max-h-[535px] bg-bgDark rounded-2xl shadow-xl overflow-y-auto hide-scroll-track">
@@ -88,7 +84,7 @@ export default function AdminOrdersPage() {
                     </td>
 
                     <td className="px-5 py-4  text-center">
-                        <ViewOrderInfoModal order={order} />
+                        <CustomerviewOrderInfoModal order={order} />
                     </td>
                     </tr>
                 ))}
@@ -96,7 +92,7 @@ export default function AdminOrdersPage() {
             </table>
             </div>
             }
-            <div className="w-full h-[60px] absolute bottom-0 left-0 flex justify-center items-center">
+            <div className="w-full h-[60px] absolute bottom-1 left-0 flex justify-center items-center">
                 <div className="w-[575px] h-[40px] bg-bg rounded-full shadow-2xl flex flex-row justify-center items-center">
                     <button onClick={
                         ()=>{
@@ -134,6 +130,6 @@ export default function AdminOrdersPage() {
                     </select>
                 </div>
             </div>
-        </div>
+        </div> //1.31.39
     );
 } 

@@ -8,23 +8,6 @@ export default function LoginPage() {
     const [password,setPassword] = useState("")
     const navigate = useNavigate()
 
-    // function login(){
-    //     axios.post("http://localhost:3000/users/login",{
-    //         email:email,
-    //         password:password
-    //     }
-    //     ).then(
-    //         (response)=>{
-    //             console.log("Login Success")
-    //             console.log(response)
-    //         }
-    //     ).catch(
-    //         (err)=>{
-    //             console.log("Login Failed")
-    //             console.log(err)
-    //         }
-    //     )
-    // }
 
     async function login(){
 
@@ -44,6 +27,7 @@ export default function LoginPage() {
                 navigate("/admin/")
             }else{
                 // redirect to home page "/"
+                navigate("/")
             }
         } catch (error) {
             toast.error(error?.response?.data?.message || "Login Failed")
@@ -81,7 +65,7 @@ export default function LoginPage() {
                     <p className="w-full text-right pr-5">Forgot your password?<Link to="/forgot-password" className="text-accent">Reset</Link></p>
                     <button onClick={login} className="m-5 p-3 w-[90%] h-[50px] rounded-md bg-accent text-white font-bold">Login</button>
                     <button className="m-5 p-3 w-[90%] h-[50px] rounded-md border border-accent text-white font-bold">Login with Google</button>
-                    <p className="w-full text-right pr-5">Don't have an account? <Link to="/register" className="text-accent">Register</Link></p>
+                    <p className="w-full text-right pr-5">Don't have an account? <Link to="/register" className="text-accent">Sign Up</Link></p>
                 </div>
             </div>
             
