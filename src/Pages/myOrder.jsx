@@ -93,7 +93,7 @@ export default function MyOrdersPage() {
             </div>
             }
             <div className="w-full h-[60px] absolute bottom-1 left-0 flex justify-center items-center">
-                <div className="w-[575px] h-[40px] bg-bg rounded-full shadow-2xl flex flex-row justify-center items-center">
+                <div className="w-[400px] lg:w-[575px] h-[40px] bg-bg rounded-full shadow-2xl flex flex-row justify-center items-center">
                     <button onClick={
                         ()=>{
                             if(pageNumber>1){
@@ -103,8 +103,8 @@ export default function MyOrdersPage() {
                                 toast.success("You are in First Page")
                             }
                         }
-                    } className="text-[18px] tracking-[3px] w-[150px] h-[40px] flex items-center justify-center rounded-full gap-2 cursor-pointer text-accent border pl-5 border-accent bg-accent/20 hover:bg-text/30 hover:border hover:border-text hover:text-text hover:pl-1 transition-all duration-200"><MdSkipPrevious className="text-[30px]" />Prev</button>
-                    <span className="w-[120px] h-[40px] font-bold text-accent text-[15px] flex items-center justify-center">
+                    } className="p-1 lg:p-0 lg:text-[18px] text-sm tracking-[3px] w-[100px] lg:w-[150px] h-[40px] flex items-center justify-center rounded-full gap-2 cursor-pointer text-accent border pl-5 border-accent bg-accent/20 hover:bg-text/30 hover:border hover:border-text hover:text-text hover:pl-1 transition-all duration-200"><MdSkipPrevious className="text-[22px] lg:text-[30px]" />Prev</button>
+                    <span className="w-[100px] lg:w-[120px] h-[40px] font-bold text-accent text-[12px] lg:text-[15px] flex items-center justify-center">
                         page {pageNumber} of {totalPages}
                     </span>
                     <button onClick={
@@ -116,13 +116,13 @@ export default function MyOrdersPage() {
                                 toast.success("You are in Last page")
                             }
                         }
-                    } className="text-[18px] tracking-[3px] w-[150px] h-[40px] flex items-center justify-center rounded-full gap-2 cursor-pointer text-accent border pr-5 border-accent bg-accent/20 hover:bg-text/30 hover:border hover:border-text hover:text-text hover:pr-1 transition-all duration-200">Next<MdSkipNext className="text-[30px]" /></button>
+                    } className="p-1 lg:p-0 lg:text-[18px] text-sm tracking-[3px] w-[100px] lg:w-[150px] h-[40px] flex items-center justify-center rounded-full gap-2 cursor-pointer text-accent border pr-5 border-accent bg-accent/20 hover:bg-text/30 hover:border hover:border-text hover:text-text hover:pr-1 transition-all duration-200">Next<MdSkipNext className="text-[22px] lg:text-[30px]" /></button>
                     <select value={pageSize} onChange={
                         (e)=>{
                             setPageSize(parseInt(e.target.value));
                             setIsLoaded(false)
                         }
-                    } className="w-[135px] h-[40px] font-bold ml-5 px-3 bg-accent/30 text-accent border border-accent rounded-full outline-none">
+                    } className="w-[100px] lg:w-[135px] h-[40px] text-sm lg:text-md font-bold ml-5 px-3 bg-accent/30 text-accent border border-accent rounded-full outline-none">
                         <option value={7}>7 Per Page</option>
                         <option value={10}>10 Per Page</option>
                         <option value={20}>20 Per Page</option>

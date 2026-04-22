@@ -16,7 +16,7 @@ export default function CustomerviewOrderInfoModal(props){
             {
                 isVisible &&(
                     <div className="fixed z-100 top-0 left-0 min-w-full min-h-full bg-bgDark/80 flex justify-center items-center ">
-                        <div className="w-[450px] h-[670px] bg-bg rounded-[20px] overflow-hidden relative">
+                        <div className="w-[400px] lg:w-[450px] h-[670px] bg-bg rounded-[20px] overflow-hidden relative">
                             <div className="w-full h-[300px] bg-accent rounded-[20px] border-b border-b-text relative overflow-hidden">
                                 <button onClick={()=>{setIsVisible(false)}} className="flex justify-center items-center w-[40px] h-[40px] rounded-bl-[20px] text-text text-[25px] bg-accent font-bold absolute cursor-pointer right-0 hover:bg-text hover:text-accent taransition-all duration-300"><IoClose /></button>
                                 <div className="w-[230px] h-[100px] ml-[110px] flex flex-col justify-center items-center ">

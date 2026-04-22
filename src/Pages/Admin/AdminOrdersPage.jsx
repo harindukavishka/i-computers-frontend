@@ -37,8 +37,8 @@ export default function AdminOrdersPage() {
     return (
         <div className="w-full h-full overflow-hidden relative">
             <div className="mb-6">
-                <h1 className="text-3xl font-bold text-text">Orders</h1>
-                <p className="text-sm text-textMuted">Manage all orders in catalog</p>
+                <h1 className="fontHeader text-3xl font-bold text-text">Orders</h1>
+                <p className="fontMuted text-sm text-textMuted">Manage all orders in catalog</p>
             </div>
             {!isLoaded?<div className="min-w-full min-h-full flex justify-center items-center overflow-hidden bg-transparent"><LoadingAnimation/></div>
             :

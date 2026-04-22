@@ -31,15 +31,15 @@ export default function Overview() {
     },[])
 
     return (
-        <div className="w-full h-[calc(100vh-100px)] flex justify-center items-center text-white">
+        <div className="w-full h-[calc(100vh-100px)] backdrop-blur-sm flex justify-center items-center text-white">
             
             {
                 product==null?<LoadingAnimation/>:
-                <div className="w-full h-full flex justify-center items-center">
-                    <div className="w-[50%] h-full"><SlideShow price={product.price} labledPrice={product.labledPrice} images={product.images}/></div>
-                    <div className="w-[50%] flex flex-col justify-center h-full p-5">
+                <div className="w-full h-full flex lg:flex-row flex-col justify-center items-center">
+                    <div className="mt-5 lg:mt-0 w-full lg:w-[50%] h-full"><SlideShow price={product.price} labledPrice={product.labledPrice} images={product.images}/></div>
+                    <div className=" w-full lg:w-[50%] flex flex-col justify-center h-full p-5">
                         <div className="flex flex-row gap-2">
-                            <h1 className="text-4xl font-bold">{product.name}</h1>
+                            <h1 className="text-2xl lg:text-4xl font-bold">{product.name}</h1>
                             <MdVerified className="text-accent text-2xl mt-1"/>
                         
                         </div>
@@ -47,24 +47,24 @@ export default function Overview() {
                             {
                                 product.altNames.map((altNames,index)=>{
                                     return(
-                                        <span key={index} className="text-3xl mb-2 text-textMuted font-medium">| {altNames} </span>
+                                        <span key={index} className="fontMuted text-lg lg:text-3xl mb-2 text-textMuted font-medium">| {altNames} </span>
                                     )
                                 })
                             }
                         </div>
-                        <p className="text-textMuted text-sm">{product.productId}</p>
+                        <p className="text-textMuted text-[10px] lg:text-sm">{product.productId}</p>
                         
                         
-                        <p className="text-lg font-medium text-textMuted mt-5 ">
+                        <p className="text-md lg:text-lg font-medium text-textMuted mt-5 ">
                             <span>{product.brand || ""}</span>
                             <span>{product.model || ""}</span>
                         </p>
-                        <p className="text-[17px] mt-5">{product.description}</p>
-                        <h1 className="text-4xl font-bold mt-5">{priceFormatted(product.price)}</h1>
+                        <p className="text-sm lg:text-[17px] mt-5">{product.description}</p>
+                        <h1 className="text-2xl lg:text-4xl font-bold mt-5">{priceFormatted(product.price)}</h1>
                         {   product.labledPrice > product.price &&
-                            <h2 className="text-3xl line-through font-bold text-accent ">{priceFormatted(product.labledPrice)}</h2>
+                            <h2 className="text-xl lg:text-3xl line-through font-bold text-accent ">{priceFormatted(product.labledPrice)}</h2>
                         }
-                        <div className="w-full h-[100px] mt-5 flex items-center justify-start gap-4">
+                        <div className="w-full h-[100px] mt-5 flex items-center justify-center lg:justify-start gap-4">
                             <button onClick={
                                 ()=>{
                                     addToCart(product,1)

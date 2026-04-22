@@ -29,7 +29,7 @@ export default function ProductPageContent() {
 
     return (
         
-        <div className="bg-gradient-to-b from-secondary/50 to-secondary/5 flex justify-center items-center flex-wrap">
+        <div className="w-full h-full flex justify-center items-center flex-wrap ">
 
             {loading && <LoadingAnimation />}
             {

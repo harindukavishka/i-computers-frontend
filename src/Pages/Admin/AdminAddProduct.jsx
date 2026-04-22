@@ -70,8 +70,8 @@ export default function AdminAddProductPage() {
     return (
         <div className="w-full max-h-full flex flex-wrap overflow-y-scroll hide-scroll-track">
             <div className="flex-row w-full h-[70px] rounded-lg mb-3 pl-3 sticky top-0 bg-bgLight">
-                <h1 className="text-2xl font-bold ">ADD PRODUCT</h1>
-                <p className="text-sm text-textMuted">Use this Form to add your new product...</p>
+                <h1 className="fontHeader mt-1 text-2xl font-bold ">ADD PRODUCT</h1>
+                <p className="fontMuted text-sm text-textMuted">Use this Form to add your new product...</p>
             </div>
             <div className=" w-[50%] h-[120px] flex flex-col">
                 <label htmlFor="" className="text-text font-bold text-m ml-3">Product ID </label>

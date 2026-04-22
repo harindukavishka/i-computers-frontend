@@ -9,21 +9,21 @@ export default function SlideShow(props){
 
     function getClass(index){
         if(index==activeImage){
-            return "w-[80px] h-[80px] rounded-2xl border-2 cursor-pointer border-accent object-cover"
+            return "w-[55px] h-[55px] lg:w-[80px] lg:h-[80px] rounded-2xl border-2 cursor-pointer border-accent object-cover"
         }else{
-            return "w-[80px] h-[80px] rounded-2xl border-2 cursor-pointer border-bgLight object-cover"
+            return "w-[55px] h-[55px] lg:w-[80px] lg:h-[80px] rounded-2xl border-2 cursor-pointer border-bgLight object-cover"
         }
     }
 
     return(
-    <div className="w-[770px] h-[550px] flex flex-row justify-center items-cente  relative">
+    <div className="w-full h-[200px] lg:w-[770px] lg:h-[550px] flex flex-row justify-center items-center relative">
 
-        <div className="w-[70px] h-[70px] flex flex-col justify-center items-center rounded-full bg-accent absolute top-10 right-15">
-            <p className="text-[25px] font-bold">{discountPrice(props.price,props.labledPrice)}%</p>
-            <p className="text-[18px] font-semibold">OFF</p>
+        <div className="w-[50px] h-[50px] lg:w-[70px] lg:h-[70px] flex flex-col justify-center items-center rounded-full bg-accent absolute top-3 right-7 lg:top-10 lg:right-15">
+            <p className="text-[20px] lg:text-[25px] font-bold">{discountPrice(props.price,props.labledPrice)}%</p>
+            <p className="text-[12px] lg:text-[18px] font-semibold">OFF</p>
         </div>
         
-        <div className="w-[100px] h-full flex flex-col justify-center items-center absolute left-1 gap-4">
+        <div className=" w-full h-[65px] lg:w-[100px] lg:h-full flex lg:flex-col flex-row justify-center items-center absolute  lg:top-0 top-55 lg:left-1 gap-4">
             {
                 images.map((image, index) => (
                     <img onClick={
@@ -32,7 +32,7 @@ export default function SlideShow(props){
                 ))
             }
         </div>
-        <img src={images[activeImage]} alt="" className="h-[500px]  object-cover ml-10" />
+        <img src={images[activeImage]} alt="" className=" w-[200px] h-[200px] lg:h-[550px] lg:w-[600px] object-fill  lg:ml-10" />
     </div>
 )
 }

@@ -12,7 +12,7 @@ function App() {
   
 
   return (
-    <div className="w-full h-screen bg-linear-to-b from-bgLight to-bgDark text-text">
+    <div className="w-full h-screen bg-[url('../public/LogoBG.png')] overflow-hidden bg-cover bg-no-repeat text-text">
       <Toaster position="top-right"/>
       <Routes>
        <Route path="/*" element={<HomePage />} />

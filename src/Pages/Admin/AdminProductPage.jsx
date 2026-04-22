@@ -44,10 +44,10 @@ export default function AdminProductPage() {
 
       {/* Page Header */}
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-text">
+        <h1 className="fontHeader text-3xl font-bold text-text">
           Products
         </h1>
-        <p className="text-sm text-textMuted">
+        <p className="fontMuted text-sm text-textMuted">
           Manage your product catalog
         </p>
       </div>

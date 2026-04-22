@@ -15,6 +15,9 @@ export default function Test() {
          <div className=" w-[300px] h-[150px] relative">
             <h1 className="font-extrabold text-center animate-pulse text-accent text-6xl absolute left-0">GoBasket</h1>
          </div>
+         <h1 className="text-2xl fontHeader">
+               Test Font
+            </h1>
       </div>
    )
     

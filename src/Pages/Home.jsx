@@ -9,7 +9,7 @@ import Settings from "./settings";
 
 export default function HomePage() {
     return (
-        <div className="w-full h-full relative">
+        <div className="w-full h-full relative overflow-x-hidden overflow-y-scroll hide-scroll-track">
             <Header>
 
             </Header>
@@ -24,7 +24,9 @@ export default function HomePage() {
                 <Route path="/overview/:productId" element={<Overview />} />
                 <Route path="/*" element={<div>404 Not Found!</div>} />
             </Routes>
-            <Cart />
+            <div className="hidden lg:flex">
+                <Cart />
+            </div>
         </div>
     )
 }
