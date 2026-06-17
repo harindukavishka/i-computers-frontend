@@ -13,7 +13,7 @@ export default function ProductCard(props){
             <p className="text-textMuted text-xl lg:text-4xl font-bold absolute top-[100px] lg:top-[170px]">{product.brand}</p>
             <div className="main-img absolute top-15 tarnsition-all duration-1000">
                 <img src={product.images[1]} alt={product.name} className="h-[120px] w-[140px] lg:h-[200px] lg:w-[220px]" />
-                <h1 className="text-[13px] lg:text-lg text-text font-bold m-3">{product.name}</h1>
+                <h1 className="text-[13px]  lg:text-lg text-text font-bold m-3">{product.name}</h1>
             </div>
             <div className="flex-col items-center w-full m-3 yep opacity-0 absolute bottom-0 tarnsition-all duration-1000">
                 <span className="text-[11px] lg:text-xs text-textMuted">{product.productId}</span>

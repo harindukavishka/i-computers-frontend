@@ -1,3 +1,4 @@
+import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -10,6 +11,32 @@ export default function LoginPage() {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const navigate = useNavigate()
+    const googleLogin = useGoogleLogin(
+        {
+            onSuccess: (response)=>{
+                axios.post(import.meta.env.VITE_API_URL+"/users/google-login",{
+                    token:response.access_token
+                }).then((res)=>{
+                    localStorage.setItem("token", res.data.token)
+                    toast.success(res.data.message)
+                    if(res.data.role === "admin"){
+                        // redirect to admin page "/admin" -> windows.location.href("/admin")
+                        navigate("/admin/")
+                    }else{
+                        // redirect to home page "/"
+                        navigate("/")
+                    }
+                }).catch((err)=>{
+                    toast.error(err?.response?.data?.message || "Login Failed")
+                })
+
+                console.log(response)
+            },
+            onError : (error)=>{
+                toast.error(error?.response?.data?.message || "Login Failed")
+            }
+        }
+    )
 
 
     async function login(){
@@ -78,7 +105,7 @@ export default function LoginPage() {
                 <p>Forgot Password ? <Link to="/forgot-password" className="text-accent ">Click Here...</Link></p>
                 <button onClick={login} className="border border-accent w-[380px] h-[50px] hover:bg-accent/40 transition-all duration-200 rounded-xl flex justify-center text-accent items-center tracking-[5px] uppercase">Sign In</button>
                     
-                <button className=" mb-7 border border-accent w-[380px] h-[50px] hover:bg-accent/40 text accent transition-all duration-200 rounded-xl flex justify-center text-accent items-center gap-5">Login with Google <FcGoogle /></button>
+                <button onClick={googleLogin} className=" mb-7 border border-accent w-[380px] h-[50px] hover:bg-accent/40 text accent transition-all duration-200 rounded-xl flex justify-center text-accent items-center gap-5">Login with Google <FcGoogle /></button>
 
                 <div className="lg:hidden flex flex-col justify-center items-center">
                     <p className="mt-5 font-bold">Already have an Account ? </p>

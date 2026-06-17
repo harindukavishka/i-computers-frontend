@@ -40,7 +40,7 @@ export default function UserData() {
                 </div>
                 :
                 <div className="flex justify-center items-center gap-5">
-                    <img src={user.image} alt="user" className="w-[35px] h-[35px] object-fill rounded-full" />
+                    <img referrerPolicy="no-referrer" src={user.image} alt="user" className="w-[35px] h-[35px] object-fill rounded-full" />
                     <select value={change} onChange={
                         (e)=>{
 

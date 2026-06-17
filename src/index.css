@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Protest+Revolution&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -30,6 +31,13 @@
   font-style: normal;
 }
 
+.fontHero {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
 
 
 .hide-scroll-track::-webkit-scrollbar{
@@ -39,6 +47,14 @@
     background: transparent;
 }
 .hide-scroll-track::-webkit-scrollbar-thumb{
-    background: linear-gradient(#D92929, #1C2426);
+    background: hsl(0, 0%, 15%);
     border-radius: 3px;
+    transition: background 0.5s ease;
+}
+.hide-scroll-track::-webkit-scrollbar-thumb:hover {
+    background: #D92929;
+}
+
+.slick-slide > div {
+  margin: 0 10px;
 }
