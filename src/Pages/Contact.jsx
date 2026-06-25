@@ -66,7 +66,7 @@ export default function ContactPage() {
   return (
     <div className="w-full min-h-screen bg-bgDark text-text overflow-hidden">
       {/* Hero */}
-      <section className="relative w-full min-h-[60vh] flex items-center px-6 lg:px-16 py-20 bg-[url('herobg1.png')] bg-no-repeat bg-cover bg-center">
+      <section className="relative w-full min-h-[60vh] flex items-center px-6 lg:px-16 py-20 bg-[url('herobg1.png')] bg-no-repeat bg-cover ">
         <div className="absolute inset-0 bg-bgDark/75"></div>
 
         <div className="relative z-10 max-w-4xl">

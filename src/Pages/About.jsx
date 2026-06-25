@@ -44,7 +44,7 @@ export default function AboutPage() {
   return (
     <div className="w-full min-h-screen bg-bgDark text-text overflow-hidden">
       {/* Hero */}
-      <section className="relative w-full min-h-[90vh] flex items-center px-6 lg:px-16 py-20 bg-[url('herobg1.png')] bg-no-repeat bg-cover bg-center">
+      <section className="relative w-full min-h-[90vh] flex items-center px-6 lg:px-16 py-20 bg-[url('herobg1.png')] bg-no-repeat bg-cover ">
         <div className="absolute inset-0 bg-bgDark/70"></div>
 
         <div className="relative z-10 max-w-4xl">
@@ -79,12 +79,7 @@ export default function AboutPage() {
             </Link>
           </div>
         </div>
-
-        <div className="absolute right-6 bottom-8 hidden xl:flex flex-col items-end gap-4 opacity-80">
-          <div className="w-28 h-28 rounded-full border border-accent/40 bg-accent/10 backdrop-blur-sm flex items-center justify-center animate-bounce">
-            <TbSparkles className="text-accent text-4xl" />
-          </div>
-        </div>
+ 
       </section>
 
       {/* Story */}
